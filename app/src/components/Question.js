@@ -21,6 +21,14 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
+function shuffleArray(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 
 function Question( {question, submit, submitted} ) {
     const [answers, setAnswers] = useState([])
@@ -38,7 +46,7 @@ function Question( {question, submit, submitted} ) {
         setOne()
         setTwo()
         setThree()
-        setAnswers([...question.incorrect, question.correct])
+        setAnswers(shuffleArray([...question.incorrect, question.correct]))
     }, [question])
 
     function clickEvent(value, event) {
@@ -60,6 +68,7 @@ function Question( {question, submit, submitted} ) {
         // console.log(event.target.id)
         submit(value)
     }
+    // console.log(answers)
 
     return (
         <div>
