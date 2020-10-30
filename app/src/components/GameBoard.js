@@ -22,6 +22,7 @@ function GameBoard( {setState, setScore} ) {
     const [loaded, setLoaded] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const classes = useStyles();
+    // console.log(localScore)
 
     useEffect(() => {
         var data = QuestionsGetter();
@@ -34,7 +35,7 @@ function GameBoard( {setState, setScore} ) {
             // console.log(localScore)
             setTimeout(() => {
                 setSubmitted(false);
-                if (questionIndex < 9) {
+                if (questionIndex < 1) {
                     setQuestionIndex(questionIndex + 1);
                 } else {
                     setScore(localScore);
@@ -70,7 +71,7 @@ function GameBoard( {setState, setScore} ) {
                     />}
                 </Card></Grid>
                 
-                <Grid item xs={12}><Chip justifyContent='center' label={`${questionIndex + 1}/10`} /></Grid>
+                <Grid item xs={12}><Chip justifycontent='center' label={`${questionIndex + 1}/10`} /></Grid>
             </Grid>
             
             

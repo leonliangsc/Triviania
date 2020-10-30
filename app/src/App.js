@@ -50,9 +50,11 @@ function App() {
             />)
         }
         {
-          state === result && (<ScoreBoard 
+          state === result && (<ScoreBoard
+            score = {
+              score
+            }
             setState={() => setState(game)}
-            score = {score}
             />)
         }
         </Grid>
