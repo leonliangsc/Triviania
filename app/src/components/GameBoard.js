@@ -3,10 +3,15 @@ import Question from './Question';
 import QuestionsGetter from './QuestionsGetter';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import Chip from '@material-ui/core/Chip';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
     root: {
       minWidth: 375,
+    },
+    grid: {
+        flexGrow: 1,
     },
   });
 
@@ -33,6 +38,10 @@ function GameBoard( {setState, setScore} ) {
                     setQuestionIndex(questionIndex + 1);
                 } else {
                     setScore(localScore);
+                    let playCount = parseInt(localStorage.getItem('playCount')) || 0;
+                    let totalScore = parseInt(localStorage.getItem('totalScore')) || 0;
+                    localStorage.setItem('playCount', ++playCount);
+                    localStorage.setItem('totalScore', totalScore + localScore);
                     setState();
                 }
             }, 1000);
@@ -51,14 +60,20 @@ function GameBoard( {setState, setScore} ) {
 
     return (
         <div>
-            <Card className={classes.root}>
-                {loaded && <Question
-                submit = {submitAnswer}
-                question = {questions[questionIndex]}
-                submitted = {submitted}
-                />}
-            </Card>
-           
+            <Grid container spacing={3}>
+
+                <Grid item xs={12}><Card className={classes.grid}>
+                    {loaded && <Question
+                    submit = {submitAnswer}
+                    question = {questions[questionIndex]}
+                    submitted = {submitted}
+                    />}
+                </Card></Grid>
+                
+                <Grid item xs={12}><Chip justifyContent='center' label={`${questionIndex + 1}/10`} /></Grid>
+            </Grid>
+            
+            
         </div>
     )
 }
