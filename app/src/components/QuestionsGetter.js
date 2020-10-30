@@ -1,4 +1,4 @@
-import data from '../Apprentice_TandemFor400_Data.json';
+import data from '../data/Apprentice_TandemFor400_Data.json';
 
 /* 
  * wrapper class:
