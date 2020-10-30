@@ -29,12 +29,17 @@ function ScoreBoard({ score, setState}) {
                     style={{ minHeight: '100vh' }}>
                 <Grid item xs={12}>
                     <Card>
-                        <Paper className={classes.paper}>Your score here</Paper>
+                        <Paper className={classes.paper}>{`Your score: ${score}/10`}</Paper>
                     </Card>
                 </Grid>
-                <Grid item xs={12}>
+            <Grid item xs={12}>
                 <Button onClick={setState} variant="contained">
                         Try Again
+                </Button>
+            </Grid>
+            <Grid item xs={12}>
+                <Button variant="contained" href='https://linktree.leonshichuan.workers.dev/'>
+                        Who made it?
                 </Button>
             </Grid>
             </Grid>

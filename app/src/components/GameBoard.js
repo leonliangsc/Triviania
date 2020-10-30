@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Chip from '@material-ui/core/Chip';
 import { Grid } from '@material-ui/core';
+import ProgressBar from './ProgressBar';
 
 const useStyles = makeStyles({
     root: {
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
     },
     grid: {
         flexGrow: 1,
+        width:'200',
     },
   });
 
@@ -35,7 +37,7 @@ function GameBoard( {setState, setScore} ) {
             // console.log(localScore)
             setTimeout(() => {
                 setSubmitted(false);
-                if (questionIndex < 1) {
+                if (questionIndex < 9) {
                     setQuestionIndex(questionIndex + 1);
                 } else {
                     setScore(localScore);
@@ -63,15 +65,19 @@ function GameBoard( {setState, setScore} ) {
         <div>
             <Grid container spacing={3}>
 
-                <Grid item xs={12}><Card className={classes.grid}>
+                <Grid item xs={12}>
+                    <Card className={classes.grid}>
                     {loaded && <Question
                     submit = {submitAnswer}
                     question = {questions[questionIndex]}
                     submitted = {submitted}
                     />}
-                </Card></Grid>
+                    </Card>
+                </Grid>
                 
-                <Grid item xs={12}><Chip justifycontent='center' label={`${questionIndex + 1}/10`} /></Grid>
+                <Grid item xs={12}>
+                    <ProgressBar progress={questionIndex + 1}/>
+                </Grid>
             </Grid>
             
             
