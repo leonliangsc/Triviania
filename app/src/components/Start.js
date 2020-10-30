@@ -18,7 +18,7 @@ function Start({setState}) {
                 id = 'start'
                 type = 'button'
                 onClick = {setState}>
-                    Enter Triviania
+                    Tandem for 400!
             </Button>
         </div>
     )
